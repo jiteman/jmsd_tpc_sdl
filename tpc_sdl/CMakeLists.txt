@@ -18,17 +18,125 @@ include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
 
 ## this project headers and sources enumeration section
-file( GLOB_RECURSE header_and_source_files
+##file( GLOB_RECURSE header_and_source_files
+file( GLOB header_and_source_files
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/include/*.h*
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/include/*.c*
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/*.h*
-	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/*.c* )
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/atomic/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/atomic/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/audio/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/audio/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/audio/disk/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/audio/disk/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/audio/dummy/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/audio/dummy/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/audio/directsound/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/audio/directsound/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/audio/wasapi/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/audio/wasapi/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/audio/winmm/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/audio/winmm/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/core/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/core/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/core/windows/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/core/windows/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/cpuinfo/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/cpuinfo/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/dynapi/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/dynapi/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/events/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/events/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/file/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/file/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/filesystem/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/filesystem/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/filesystem/dummy/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/filesystem/dummy/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/filesystem/windows/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/filesystem/windows/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/haptic/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/haptic/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/haptic/windows/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/haptic/windows/*.c*
+#	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/hidapi/*.h*
+#	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/hidapi/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/hidapi/windows/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/hidapi/windows/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/joystick/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/joystick/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/joystick/hidapi/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/joystick/hidapi/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/joystick/windows/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/joystick/windows/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/libm/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/libm/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/loadso/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/loadso/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/loadso/windows/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/loadso/windows/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/direct3d/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/direct3d/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/direct3d11/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/direct3d11/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/opengl/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/opengl/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/opengles/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/opengles/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/opengles2/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/opengles2/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/psp/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/psp/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/software/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/render/software/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/stdlib/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/stdlib/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/power/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/power/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/power/windows/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/power/windows/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/sensor/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/sensor/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/sensor/dummy/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/sensor/dummy/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/thread/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/thread/*.c*
+#	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/thread/generic/*.h*
+#	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/thread/generic/*.c*
+#	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/thread/stdcpp/*.h*
+#	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/thread/stdcpp/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/thread/windows/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/thread/windows/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/windows/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/windows/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/windows/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/windows/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/dummy/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/dummy/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/windows/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/windows/*.c*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/yuv2rgb/*.h*
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/yuv2rgb/*.c* )
+
+list( APPEND header_and_source_files
+	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/thread/generic/SDL_syscond.c )
+
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 
 ## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
-	-DJMSD_TPC_BASE_LIBRARY_TEMPLATE_SHARED_INTERFACE_INTERNAL )
+	-DJMSD_TPC_SDL_SHARED_INTERFACE_INTERNAL
+	-DBUILD_SDL )
 JMSD_LIST_TO_STRING( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 set( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR
@@ -45,8 +153,17 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
 
 
 ## project target section
-set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
-	"" )
+if ( WIN32 )
+	set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
+		"Imm32.lib"
+		"Setupapi.lib"
+		"Version.lib"
+		"Winmm.lib" )
+elseif( UNIX )
+	set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
+		"" )
+endif()
+
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 

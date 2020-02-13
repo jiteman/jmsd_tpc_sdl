@@ -117,19 +117,30 @@ file( GLOB header_and_source_files
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/windows/*.c*
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/*.h*
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/*.c*
-	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/windows/*.h*
-	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/windows/*.c*
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/*.h*
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/*.c*
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/dummy/*.h*
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/dummy/*.c*
-	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/windows/*.h*
-	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/windows/*.c*
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/yuv2rgb/*.h*
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/yuv2rgb/*.c* )
 
 list( APPEND header_and_source_files
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/thread/generic/SDL_syscond.c )
+
+if( UNIX )
+	file( GLOB header_and_source_files_UNIX
+		)
+
+	list( APPEND header_and_source_files ${header_and_source_files_UNIX} )
+elseif( WIN32 )
+	file( GLOB header_and_source_files_Windows
+		${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/windows/*.h*
+		${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/timer/windows/*.c*
+		${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/windows/*.h*
+		${JMSD_THIS_PROJECT_SOURCE_ROOT}/src/video/windows/*.c*
+		)
+	list( APPEND header_and_source_files ${header_and_source_files_Windows} )
+endif()
 
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 

@@ -15,15 +15,15 @@ set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/include
 	${JMSD_THIS_PROJECT_SOURCE_ROOT}/jmsd_adhocs/include ) # SDL2/SDL.h
 
-list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
-include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
-
 if( UNIX )
-	include_directories( ${JMSD_COMPONENT_SOURCE_ROOT_PATH}/jmsd_adhocs/linux )
+	list( APPEND ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR ${JMSD_COMPONENT_SOURCE_ROOT_PATH}/jmsd_adhocs/linux ) # SDL_config_linux.h
 elseif ( WIN32 )
-	include_directories( ${JMSD_COMPONENT_SOURCE_ROOT_PATH}/jmsd_adhocs/windows )
+	list( APPEND ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR ${JMSD_COMPONENT_SOURCE_ROOT_PATH}/jmsd_adhocs/windows ) # none
 endif()
 
+list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
+
+include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
 
 ## this project headers and sources enumeration section
 ##file( GLOB_RECURSE header_and_source_files

@@ -3,6 +3,8 @@ JMSD_CMAKE_CURRENT_FILE_IN( "${JMSD_FOREIGN_COMPONENT_FULL_NAME}-linux-compiler-
 if ( UNIX )
 	# C
 	set( ${PROJECT_NAME}_C_FLAGS ${CMAKE_C_FLAGS} )
+	##set( ${PROJECT_NAME}_C_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG} )
+	set( ${PROJECT_NAME}_C_FLAGS_RELEASE ${CMAKE_C_FLAGS_RELEASE} )
 
 	## list( APPEND ${PROJECT_NAME}_C_FLAGS "-Wno-" ) #
 	list( APPEND ${PROJECT_NAME}_C_FLAGS "-Wno-undef" ) # "" is not defined, evaluates to 0
@@ -24,27 +26,38 @@ if ( UNIX )
 	list( APPEND ${PROJECT_NAME}_C_FLAGS "-Wno-cast-function-type" ) # cast between incompatible function types from '' to ''
 	list( APPEND ${PROJECT_NAME}_C_FLAGS "-Wno-suggest-attribute=format" ) # function '' might be a candidate for '' format attribute
 	list( APPEND ${PROJECT_NAME}_C_FLAGS "-Wno-int-conversion" ) # assignment to '' from '' makes pointer from integer without a cast
-	list( APPEND ${PROJECT_NAME}_C_FLAGS "-Wno-inline" ) # inlining failed in call to 'HandleInputEvents': --param large-stack-frame-growth limit reached
+
+	list( APPEND ${PROJECT_NAME}_C_FLAGS_RELEASE "-Wno-inline" ) # inlining failed in call to 'HandleInputEvents': --param large-stack-frame-growth limit reached
 
 	string( REPLACE ";" " " ${PROJECT_NAME}_C_FLAGS_STR "${${PROJECT_NAME}_C_FLAGS}" )
+	##string( REPLACE ";" " " ${PROJECT_NAME}_C_FLAGS_STR_DEBUG  "${${PROJECT_NAME}_C_FLAGS_DEBUG }" )
+	string( REPLACE ";" " " ${PROJECT_NAME}_C_FLAGS_STR_RELEASE "${${PROJECT_NAME}_C_FLAGS_RELEASE}" )
 
 	## string( REPLACE "-W" "" ${PROJECT_NAME}_C_FLAGS_STR "${${PROJECT_NAME}_C_FLAGS_STR}" ) #
 	string( REPLACE "-Wpedantic" "" ${PROJECT_NAME}_C_FLAGS_STR "${${PROJECT_NAME}_C_FLAGS_STR}" ) #
 	string( REPLACE "-pedantic-errors" "" ${PROJECT_NAME}_C_FLAGS_STR "${${PROJECT_NAME}_C_FLAGS_STR}" ) #
 
 	set( CMAKE_C_FLAGS ${${PROJECT_NAME}_C_FLAGS_STR} )
+	##set( CMAKE_C_FLAGS_DEBUG ${${PROJECT_NAME}_C_FLAGS_STR_DEBUG} )
+	set( CMAKE_C_FLAGS_RELEASE ${${PROJECT_NAME}_C_FLAGS_STR_RELEASE} )
 
 	# C++
 	set( ${PROJECT_NAME}_CXX_FLAGS ${CMAKE_CXX_FLAGS} )
+	##set( ${PROJECT_NAME}_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG} )
+	##set( ${PROJECT_NAME}_CXX_FLAGS_RELEASE ${CMAKE_CXX_FLAGS_RELEASE} )
 
 	## list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-" ) #
 	list( APPEND ${PROJECT_NAME}_CXX_FLAGS "-Wno-undef" ) # "" is not defined, evaluates to 0
 
 	string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS}" )
+	##string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR_DEBUG "${${PROJECT_NAME}_CXX_FLAGS_DEBUG}" )
+	##string( REPLACE ";" " " ${PROJECT_NAME}_CXX_FLAGS_STR_RELEASE "${${PROJECT_NAME}_CXX_FLAGS_RELEASE}" )
 
 	## string( REPLACE "-W" "" ${PROJECT_NAME}_CXX_FLAGS_STR "${${PROJECT_NAME}_CXX_FLAGS_STR}" ) #
 
 	set( CMAKE_CXX_FLAGS ${${PROJECT_NAME}_CXX_FLAGS_STR} )
+	##set( CMAKE_CXX_FLAGS_DEBUG ${${PROJECT_NAME}_CXX_FLAGS_STR_DEBUG} )
+	##set( CMAKE_CXX_FLAGS_RELEASE ${${PROJECT_NAME}_CXX_FLAGS_STR_RELEASE} )
 else()
 	message( SEND_ERROR "[JMSD] ${JMSD_FOREIGN_COMPONENT_FULL_NAME} COMPILER SETTINGS: ${JMSD_FOREIGN_COMPONENT_FULL_NAME}-linux-compiler-settings.cmake is included while not on linux" )
 
